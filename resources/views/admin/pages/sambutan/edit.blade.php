@@ -19,7 +19,7 @@
         <div>
             <label class="block font-medium mb-2">Foto Kepala Sekolah</label>
             @if($sambutan->foto)
-                <img src="{{ Storage::url($sambutan->foto) }}" alt="Foto" class="w-24 h-24 object-cover rounded mb-2">
+                <img src="{{ asset('storage/' . $sambutan->foto) }}" alt="Foto" class="w-24 h-24 object-cover rounded mb-2">
             @endif
             <input type="file" name="foto" class="w-full border border-gray-300 rounded px-4 py-2">
         </div>

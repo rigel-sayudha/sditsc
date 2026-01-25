@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Registration;
 use App\Models\RegistrationPoint;
@@ -54,7 +56,8 @@ class AdminController extends Controller
 
     public function articles()
     {
-        return view('admin.pages.articles.index');
+        $articles = \App\Models\Article::orderBy('created_at', 'desc')->paginate(10);
+        return view('admin.pages.articles.index', compact('articles'));
     }
 
     public function announcements()
@@ -69,7 +72,7 @@ class AdminController extends Controller
 
     public function organization()
     {
-        $organizationImage = \Storage::disk('public')->exists('organization/struktur.png')
+        $organizationImage = Storage::disk('public')->exists('organization/struktur.png')
             ? '/storage/organization/struktur.png'
             : '/images/struktur-placeholder.png';
         return view('admin.organization', compact('organizationImage'));
@@ -90,16 +93,27 @@ class AdminController extends Controller
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $updateData = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+
         if ($request->filled('password')) {
-            $user->password = bcrypt($request->password);
+            $updateData['password'] = bcrypt($request->password);
         }
+
         if ($request->hasFile('avatar')) {
+            // Delete old avatar if exists
+            if ($user->avatar && Storage::disk('public')->exists(str_replace('/storage/', '', $user->avatar))) {
+                Storage::disk('public')->delete(str_replace('/storage/', '', $user->avatar));
+            }
+            
+            // Store new avatar
             $avatar = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = '/storage/' . $avatar;
+            $updateData['avatar'] = '/storage/' . $avatar;
         }
-        $user->save();
+
+        $user->update($updateData);
 
         return redirect()->route('admin.profile')->with('success', 'Profil berhasil diperbarui!');
     }
@@ -139,8 +153,10 @@ class AdminController extends Controller
     // Hapus semua data siswa
     public function deleteAllRegistrations()
     {
+        Schema::disableForeignKeyConstraints();
         Registration::truncate();
         return redirect()->back()->with('success', 'Semua data siswa berhasil dihapus.');
+        Schema::enableForeignKeyConstraints();
     }
 
     // Tampilkan form edit nilai tes

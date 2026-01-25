@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - SDIT SEMESTA CENDEKIA</title>
-    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="icon" type="image/png" href="../images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @stack('styles')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -50,7 +51,7 @@
         <div id="sidebar" class="sidebar-admin w-64 fixed h-full z-30 transition-transform duration-300 ease-in-out transform -translate-x-full md:translate-x-0">
             <div class="flex items-center justify-between px-4 py-6 relative">
                 <div class="flex items-center">
-                    <img src="/images/logo.png" alt="Logo" class="h-8 w-8 mr-3">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 w-8 mr-3">
                     <span class="text-white text-lg font-semibold">SDIT SEMESTA CENDEKIA</span>
                 </div>
                 <button onclick="toggleSidebar()" class="text-white md:hidden">
@@ -65,13 +66,31 @@
                 </button>
             </div>
             <nav class="mt-8 px-4 flex flex-col gap-2" id="sidebarMenu">
-                <a href="{{ route('admin.ekstrakurikuler.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.ekstrakurikuler.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">Ekstrakurikuler</a>
-                <a href="/admin/organization" class="sidebar-nav-btn" onclick="closeSidebarOnMobile()">Struktur Organisasi</a>
-                <a href="/admin/leaderboard" class="sidebar-nav-btn" onclick="closeSidebarOnMobile()">Pendaftaran Siswa Baru</a>
-                <a href="{{ route('admin.kotak-saran') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.kotak-saran') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">Kotak Saran</a>
-                <a href="{{ route('admin.poster.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.poster.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">Banner Iklan</a>
-                <a href="{{ route('admin.sambutan.index') }}" class="sidebar-nav-btn" onclick="closeSidebarOnMobile()">Sambutan</a>
-                <a href="{{ route('admin.galeri.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.galeri.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">Galeri Sekolah</a>
+                <a href="{{ route('admin.ekstrakurikuler.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.ekstrakurikuler.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-users-cog mr-2"></i>Ekstrakurikuler
+                </a>
+                <!-- <a href="/organization" class="sidebar-nav-btn" onclick="closeSidebarOnMobile()">Struktur Organisasi</a> -->
+                <!--<a href="/leaderboard" class="sidebar-nav-btn" onclick="closeSidebarOnMobile()">Pendaftaran Siswa Baru</a> -->
+                <!-- <a href="{{ route('admin.organization') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.organization') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">Struktur Organisasi</a> -->
+                <a href="{{ route('admin.leaderboard') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.leaderboard') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-user-graduate mr-2"></i>Pendaftaran Siswa Baru
+                </a>
+                <a href="{{ route('admin.test-schedules.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.test-schedules.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-calendar-alt mr-2"></i>Jadwal Tes
+                </a>
+                <a href="{{ route('admin.kotak-saran') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.kotak-saran') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-comment-dots mr-2"></i>Kotak Saran
+                </a>
+                <a href="{{ route('admin.poster.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.poster.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-bullhorn mr-2"></i>Banner Iklan
+                </a>
+                <a href="{{ route('admin.articles.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.articles.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-newspaper mr-2"></i>Berita Terkini
+                </a>
+                <!-- <a href="{{ route('admin.sambutan.index') }}" class="sidebar-nav-btn" onclick="closeSidebarOnMobile()">Sambutan</a> -->
+                <a href="{{ route('admin.galeri.index') }}" class="sidebar-nav-btn{{ request()->routeIs('admin.galeri.*') ? ' active' : '' }}" onclick="closeSidebarOnMobile()">
+                    <i class="fas fa-images mr-2"></i>Galeri Sekolah
+                </a>
             </nav>
         </div>
 

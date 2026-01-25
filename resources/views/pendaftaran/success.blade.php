@@ -14,7 +14,7 @@
                 <h1 class="text-3xl font-bold text-gray-800 mb-4">Pendaftaran Berhasil!</h1>
                 <p class="text-lg text-gray-600 mb-8">
                     Terima kasih telah mendaftar di SDIT SEMESTA CENDEKIA.<br>
-                    Silahkan tunggu pengumuman selanjutnya
+                    Silahkan datang ke sekolah sesuai dengan jadwal yang dipilih.
                 </p>
 
                 <div class="mt-8">

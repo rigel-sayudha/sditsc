@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('admin.layouts.admincreate')
 
 @section('title', 'Tambah Berita Baru')
 
@@ -25,7 +25,7 @@
                     <label for="konten" class="block text-gray-700 font-medium mb-2">Konten</label>
                     <textarea name="konten" id="konten" rows="10" 
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 @error('konten') border-red-500 @enderror"
-                        required>{{ old('konten') }}</textarea>
+                        >{{ old('konten') }}</textarea>
                     @error('konten')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -55,14 +55,8 @@
                 </div>
 
                 <div class="flex justify-end space-x-4">
-                    <a href="{{ route('admin.articles.index') }}" 
-                        class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
-                        Batal
-                    </a>
-                    <button type="submit" 
-                        class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                        Simpan Berita
-                    </button>
+                    <a href="{{ route('admin.articles.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Batal</a>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan Berita</button>
                 </div>
             </form>
         </div>

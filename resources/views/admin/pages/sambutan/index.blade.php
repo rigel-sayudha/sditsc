@@ -24,7 +24,7 @@
                 <tr class="hover:bg-gray-100">
                     <td class="py-3 px-6 flex items-center space-x-4">
                         @if($sambutan->foto)
-                            <img src="{{ Storage::url($sambutan->foto) }}" alt="{{ $sambutan->nama_kepala }}" class="w-16 h-16 object-cover rounded-full">
+                            <img src="{{ asset('storage/' . $sambutan->foto) }}" alt="{{ $sambutan->nama_kepala }}" class="w-16 h-16 object-cover rounded-full">
                         @else
                             <div class="w-16 h-16 bg-gray-200 flex items-center justify-center rounded-full">
                                 <span class="text-gray-400 text-xs">No Image</span>

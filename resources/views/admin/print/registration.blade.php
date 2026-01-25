@@ -29,6 +29,7 @@
         <div class="row"><span class="label">Pekerjaan Ibu:</span> <span class="value">{{ $registration->pekerjaan_ibu }}</span></div>
         <div class="row"><span class="label">Penghasilan Ibu:</span> <span class="value">{{ $registration->penghasilan_ibu }}</span></div>
         <div class="row"><span class="label">Alamat:</span> <span class="value">{{ $registration->alamat }}</span></div>
+        <div class="row"><span class="label">No. Orang Tua:</span> <span class="value">{{ $registration->telepon_ortu }}</span></div>
     </div>
     <div class="footer">
         Dicetak otomatis dari sistem pendaftaran sekolah &mdash; {{ date('d M Y H:i') }}

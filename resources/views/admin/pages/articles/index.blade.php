@@ -27,11 +27,11 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($articles as $article)
+                @forelse ($articles as $article) 
                 <tr class="hover:bg-gray-100">
                 <td class="py-3 px-6 flex items-center space-x-4">
                     @if($article->gambar)
-                        <img src="{{ Storage::url($article->gambar) }}" alt="{{ $article->judul }}" class="w-16 h-12 object-cover rounded">
+                        <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->judul }}" class="w-16 h-12 object-cover rounded">
                     @else
                         <div class="w-16 h-12 bg-gray-200 flex items-center justify-center rounded">
                             <span class="text-gray-400 text-xs">No Image</span>

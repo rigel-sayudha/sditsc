@@ -33,6 +33,29 @@
 
 <div class="min-h-screen pt-24 pb-12">
     <div class="container mx-auto px-4">
+        
+        <!-- Error Messages -->
+        @if ($errors->any())
+            <div class="max-w-5xl mx-auto mb-6">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    <strong>Terjadi kesalahan:</strong>
+                    <ul class="mt-2 list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="max-w-5xl mx-auto mb-6">
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                    {{ session('error') }}
+                </div>
+            </div>
+        @endif
+        
         @php
             $step = request()->get('step', 1);
         @endphp
@@ -59,7 +82,7 @@
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-10 fade-in">
                 <h1 class="text-4xl font-bold text-gray-800 mb-4">Pendaftaran Siswa Baru</h1>
-                <p class="text-lg text-gray-600">Tahun Ajaran 2025/2026</p>
+                <p class="text-lg text-gray-600">Tahun Ajaran 2026/2027</p>
             </div>
 
             @if($step == 1)

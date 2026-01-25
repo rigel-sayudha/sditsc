@@ -10,12 +10,14 @@ class Registration extends Model
     use HasFactory;
 
     protected $fillable = [
+        'test_schedule_id',
         'nama',
         'nik',
         'tempat_lahir',
         'tanggal_lahir',
         'jenis_kelamin',
         'agama',
+        'asal_sekolah',
         'nama_ayah',
         'nama_ibu',
         'pekerjaan_ayah',
@@ -39,4 +41,10 @@ class Registration extends Model
         'abk',
         'total_poin',
     ];
+
+    // Relasi ke TestSchedule
+    public function testSchedule()
+    {
+        return $this->belongsTo(TestSchedule::class);
+    }
 }

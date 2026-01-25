@@ -6,11 +6,11 @@ use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\StrukturOrganisasiController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\TestScheduleController;
 use App\Http\Controllers\ContactController;
 
 /*
@@ -26,11 +26,13 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/timezone', function(){
+    return config('app.timezone');
+});
 // Login routes
 Route::get('/admin/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/admin/login', [LoginController::class, 'login']);
 Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
-
 // Admin routes with auth middleware
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Kotak Saran Admin
@@ -51,6 +53,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/announcements', [AdminController::class, 'announcements'])->name('admin.announcements');
     Route::get('/registrations', [AdminController::class, 'registrations'])->name('admin.registrations');
     Route::get('/organization', [AdminController::class, 'organization'])->name('admin.organization');
+    Route::put('/organization', [AdminController::class, 'updateOrganization'])->name('admin.organization.update');
     Route::get('/leaderboard', [AdminController::class, 'leaderboard'])->name('admin.leaderboard');
     // Edit nilai tes siswa (harus di dalam group agar prefix 'admin.' aktif)
     Route::get('/registrations/{id}/edit-tes', [AdminController::class, 'editTes'])->name('admin.editTes');
@@ -89,10 +92,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         'as' => 'admin'
     ]);
 
-    // Galeri Admin CRUD
-    Route::resource('galeri', \App\Http\Controllers\Admin\GaleriController::class, [
+    // Test Schedule Management Routes
+    Route::resource('test-schedules', \App\Http\Controllers\Admin\TestScheduleController::class, [
         'as' => 'admin'
     ]);
+    Route::get('test-schedules-calendar', [\App\Http\Controllers\Admin\TestScheduleController::class, 'calendar'])->name('admin.test-schedules.calendar');
+    Route::patch('test-schedules/{testSchedule}/toggle-status', [\App\Http\Controllers\Admin\TestScheduleController::class, 'toggleStatus'])->name('admin.test-schedules.toggle-status');
 
     Route::get('/print-accepted-registrations', [App\Http\Controllers\AdminController::class, 'printAcceptedRegistrations'])->name('admin.printAcceptedRegistrations');
 
@@ -103,7 +108,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 });
 
 // Registration route
-Route::post('/register', [RegistrationController::class, 'store'])->name('register.store');
+// Auth routes (removed problematic register route)
 Route::post('/kotak-saran', [App\Http\Controllers\KotakSaranController::class, 'store'])->name('kotak-saran.store');
 
 // Struktur Organisasi route
@@ -113,7 +118,21 @@ Route::get('/struktur-organisasi', [StrukturOrganisasiController::class, 'index'
 Route::get('/pendaftaran', [PendaftaranController::class, 'index'])->name('pendaftaran');
 Route::post('/pendaftaran', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
 
+// Debug route
+Route::post('/test-submit', function(\Illuminate\Http\Request $request) {
+    return response()->json([
+        'message' => 'Form data received',
+        'step' => $request->query('step'),
+        'data' => $request->all()
+    ]);
+});
+
 Route::get('/pendaftaran/success', [PendaftaranController::class, 'success'])->name('pendaftaran.success');
+
+// Demo Weekend Logic
+Route::get('/demo-weekend', function() {
+    return view('demo-weekend');
+})->name('demo-weekend');
 
 Route::get('/hasil-seleksi', [PendaftaranController::class, 'selectionResults'])->name('hasil-seleksi');
 
@@ -124,15 +143,30 @@ Route::post('/api/chat', [ChatController::class, 'chat'])->name('api.chat');
 Route::get('/berita', [App\Http\Controllers\BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/{slug}', [App\Http\Controllers\BeritaController::class, 'show'])->name('berita.show');
 
-// Struktur Organisasi Admin
-Route::get('/admin/organization', [AdminController::class, 'organization'])->name('admin.organization');
-Route::put('/admin/organization', [AdminController::class, 'updateOrganization'])->name('admin.organization.update');
+// Artikel Management Routes (Public)
+Route::resource('artikel', ArticleController::class, [
+    'names' => [
+        'index' => 'artikel.index',
+        'show' => 'artikel.detail',
+        'create' => 'artikel.create',
+        'store' => 'artikel.store',
+        'edit' => 'artikel.edit',
+        'update' => 'artikel.update',
+        'destroy' => 'artikel.destroy'
+    ]
+]);
 
-// Artikel Management Routes
-Route::resource('artikel', ArticleController::class);
-Route::get('artikel/{id}', [ArticleController::class, 'show'])->name('artikel.show');
+Route::get('/jadwal-tes', [App\Http\Controllers\TestSchedulePublicController::class, 'index'])->name('jadwal-tes.index');
+Route::get('/api/available-schedules', [App\Http\Controllers\TestSchedulePublicController::class, 'getAvailableSchedules'])->name('api.available-schedules');
+
+Route::get('/test-images-debug', function() {
+    $articles = App\Models\Article::select('id', 'judul', 'gambar')->get();
+    return view('test-images-debug', compact('articles'));
+});
+
+// Galeri Route
+Route::get('/galeri', [App\Http\Controllers\GaleriController::class, 'index'])->name('galeri.index');
 
 // Galeri Publik
 Route::get('/galeri', [\App\Http\Controllers\GaleriController::class, 'index'])->name('galeri.index');
-// Galeri detail (optional, uncomment if needed)
-// Route::get('/galeri/{id}', [\App\Http\Controllers\GaleriController::class, 'show'])->name('galeri.show');
+

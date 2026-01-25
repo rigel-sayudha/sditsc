@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appberita')
 
 @section('title'){{ $article->judul }} - SDIT SEMESTA CENDEKIA @endsection
 
@@ -9,9 +9,7 @@
             <!-- Article Header -->
             <div class="mb-8">
                 @if($article->gambar)
-                    <img src="{{ Storage::url($article->gambar) }}" 
-                         alt="{{ $article->judul }}" 
-                         class="w-full h-[400px] object-cover rounded-2xl mb-6">
+                     <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->judul }}" class="w-50 h-50 object-cover rounded">
                 @endif
                 <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ $article->judul }}</h1>
                 <div class="flex items-center text-gray-600 mb-6">
@@ -58,9 +56,7 @@
                     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                         <div class="relative">
                             @if($recentArticle->gambar)
-                                <img src="{{ Storage::url($recentArticle->gambar) }}" 
-                                     alt="{{ $recentArticle->judul }}" 
-                                     class="w-full h-40 object-cover">
+                                 <img src="{{ asset('storage/' . $recentArticle->gambar) }}" alt="{{ $article->judul }}" class="w-full h-56 object-cover">
                             @else
                                 <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
                                     <span class="text-gray-400">No Image</span>

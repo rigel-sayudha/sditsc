@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('admin.layouts.admincreate')
 
 @section('title', 'Tambah Ekstrakurikuler')
 

@@ -32,19 +32,18 @@ class ArticleController extends Controller
 
         $gambar = $request->file('gambar');
         $gambarPath = $gambar->store('articles', 'public');
-        $gambarUrl = 'storage/' . $gambarPath;
+        //$gambarUrl = 'storage/' . $gambarPath;
 
         Article::create([
             'judul' => $request->judul,
             'slug' => Str::slug($request->judul),
             'konten' => $request->konten,
-            'gambar' => $gambarUrl, // simpan path dengan awalan 'storage/'
+            'gambar' => $gambarPath, // simpan path dengan awalan 'storage/'
             'status' => $request->status,
             'user_id' => auth()->id()
         ]);
 
-        return redirect()->route('admin.articles.index')
-            ->with('success', 'Berita berhasil ditambahkan');
+        return redirect()->route('admin.articles.index')->with('success', 'Berita berhasil ditambahkan');
     }
 
     public function edit(Article $article)
@@ -77,7 +76,6 @@ class ArticleController extends Controller
             // Store new image
             $gambar = $request->file('gambar');
             $data['gambar'] = $gambar->store('articles', 'public');
-            $data['gambar'] = 'storage/' . $data['gambar']; // tambahkan awalan 'storage/'
         }
 
         $article->update($data);
@@ -94,8 +92,7 @@ class ArticleController extends Controller
         
         $article->delete();
 
-        return redirect()->route('admin.articles.index')
-            ->with('success', 'Berita berhasil dihapus');
+        return redirect()->route('admin.articles.index')->with('success', 'Berita berhasil dihapus');
     }
 
     public function show(Article $article)

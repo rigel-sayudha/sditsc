@@ -14,37 +14,40 @@
                 <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" required>
             </div>
             <div>
+                <label class="block text-gray-700 font-medium mb-2" for="nik">NIK (Nomor Induk Kependudukan)</label>
+                <input type="number" id="nik" name="nik" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" required min="1000000000000000" max="9999999999999999" placeholder="16 digit angka">
+                <span class="text-xs text-gray-500">Masukkan 16 digit NIK dari KTP/Kartu Keluarga</span>
+            </div>
+            <div>
                 <label class="block text-gray-700 font-medium mb-2" for="tempat_tanggal_lahir">Tempat, Tanggal Lahir</label>
                 <div class="flex flex-col md:flex-row md:space-x-4">
                     <input type="text" id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir" class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent mb-2 md:mb-0" required>
                     <input type="date" id="tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir" class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" required>
                 </div>
             </div>
-            <!-- Email siswa dihapus -->
             <div>
                 <label class="block text-gray-700 font-medium mb-2" for="jenis_kelamin">Jenis Kelamin</label>
                 <div class="flex space-x-4">
-                    <label class="inline-flex items-center">
-                        <input type="radio" name="jenis_kelamin" value="L" class="form-radio text-blue-600" required>
+                   <label class="inline-flex items-center">
+                        <input type="radio" name="jenis_kelamin" value="Laki-laki" class="form-radio text-blue-600" required>
                         <span class="ml-2">Laki-laki</span>
                     </label>
                     <label class="inline-flex items-center">
-                        <input type="radio" name="jenis_kelamin" value="P" class="form-radio text-blue-600" required>
+                        <input type="radio" name="jenis_kelamin" value="Perempuan" class="form-radio text-blue-600" required>
                         <span class="ml-2">Perempuan</span>
                     </label>
+                  <!-- <select id="jenis_kelamin" name="jenis_kelamin" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" required> 
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select> -->
                 </div>
             </div>
             <div>
-                <label class="block text-gray-700 font-medium mb-2" for="agama">Agama</label>
-                <select id="agama" name="agama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" required>
-                    <option value="">Pilih Agama</option>
+                 <!--<label class="block text-gray-700 font-medium mb-2" for="agama">Agama</label>
+                  <select id="agama" name="agama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" required> 
                     <option value="Islam">Islam</option>
-                    <option value="Kristen">Kristen</option>
-                    <option value="Katolik">Katolik</option>
-                    <option value="Hindu">Hindu</option>
-                    <option value="Buddha">Buddha</option>
-                    <option value="Konghucu">Konghucu</option>
-                </select>
+                </select> -->
+                <input type="hidden" id="agama" name="agama" value="Islam" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent" readonly> 
             </div>
             <!-- No. Telepon siswa dihapus -->
             <div>
@@ -53,13 +56,13 @@
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2" for="file_kk">Upload Kartu Keluarga (KK) <span class="text-red-500">*</span></label>
-                <input type="file" id="file_kk" name="file_kk" accept=".jpg,.jpeg,.png,.pdf" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white" required>
-                <span class="text-xs text-gray-500">Format: JPG, PNG, atau PDF. Maksimal 2MB.</span>
+                <input type="file" id="file_kk" name="file_kk" accept=".jpg,.jpeg,.png,.pdf" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white">
+                <span class="text-xs text-gray-500">Format: JPG, PNG, atau PDF. Maksimal 2MB. (Optional untuk testing)</span>
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2" for="file_akta">Upload Akta Kelahiran <span class="text-red-500">*</span></label>
-                <input type="file" id="file_akta" name="file_akta" accept=".jpg,.jpeg,.png,.pdf" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white" required>
-                <span class="text-xs text-gray-500">Format: JPG, PNG, atau PDF. Maksimal 2MB.</span>
+                <input type="file" id="file_akta" name="file_akta" accept=".jpg,.jpeg,.png,.pdf" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-white">
+                <span class="text-xs text-gray-500">Format: JPG, PNG, atau PDF. Maksimal 2MB. (Optional untuk testing)</span>
             </div>
         </div>
     </div>
@@ -87,7 +90,7 @@
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2" for="telepon_ortu">Telepon Orang Tua</label>
-                <input type="tel" id="telepon_ortu" name="telepon_ortu" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent" required pattern="[0-9+\-() ]+" maxlength="20">
+                <input type="number" id="telepon_ortu" name="telepon_ortu" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent" required min="1000000000" max="99999999999999" placeholder="08123456789">
                 <span class="text-xs text-gray-500">Contoh: 08123456789</span>
             </div>
             <div>
@@ -96,8 +99,9 @@
                     <option value="">Pilih Pekerjaan</option>
                     <option value="Karyawan Swasta">Karyawan Swasta</option>
                     <option value="Wiraswasta">Wiraswasta</option>
-                    <option value="Buruh">Buruh</option>
                     <option value="PNS/TNI/POLRI">PNS/TNI/POLRI</option>
+                    <option value="Buruh">Buruh</option>
+                    <option value="Tidak Bekerja">Tidak Bekerja</option>
                 </select>
             </div>
                   <div>
@@ -132,9 +136,7 @@
                 </select>
             </div>
             <div>
-                <label class="block text-gray-700 font-medium mb-2" for="status_pip">Status Rekomendasi PIP</label>
-                <input type="text" id="status_pip" name="status_pip" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed" readonly placeholder="Akan terisi otomatis" />
-                <span class="text-xs text-gray-500">Y = Direkomendasikan, N = Tidak Direkomendasikan</span>
+                <input type="hidden" id="status_pip" name="status_pip" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 cursor-not-allowed" readonly placeholder="Akan terisi otomatis" />
             </div>
         </div>
     </div>
@@ -165,7 +167,7 @@
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2" for="no_telp_wali">Nomor Telepon</label>
-                <input type="tel" id="no_telp_wali" name="no_telp_wali" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                <input type="number" id="no_telp_wali" name="no_telp_wali" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent" min="1000000000" max="99999999999999" placeholder="08123456789">
             </div>
             <div>
                 <label class="block text-gray-700 font-medium mb-2" for="pekerjaan_wali">Pekerjaan Wali</label>
@@ -182,7 +184,7 @@
     </div>
 
     <div class="flex justify-end space-x-4 fade-in">
-        <button type="submit" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300">
+        <button type="submit" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition duration-300" onclick="console.log('Form submit clicked'); return true;">
             Lanjut ke Jadwal Tes
         </button>
     </div>
@@ -190,6 +192,34 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        
+        // Debug form submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            console.log('Form submission event triggered');
+            console.log('Form action:', this.action);
+            console.log('Form method:', this.method);
+            
+            // Check required fields
+            const requiredFields = this.querySelectorAll('[required]');
+            let hasErrors = false;
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    console.log('Missing required field:', field.name);
+                    hasErrors = true;
+                }
+            });
+            
+            if (hasErrors) {
+                console.log('Form has validation errors');
+                alert('Please fill all required fields');
+                e.preventDefault();
+                return false;
+            }
+            
+            console.log('Form validation passed, submitting...');
+        });
+        
         const checkbox = document.getElementById('memiliki_wali');
         const formWali = document.getElementById('form_wali');
 

@@ -1,75 +1,104 @@
-# SD IT Semesta Cendekia
+# SD IT Semesta Cendekia / 🎓 Sistem PPDB SD IT Cendekia
 
-Aplikasi web profile SD IT Semesta Cendekia dengan fitur pendaftaran siswa berbasis Laravel.
+Aplikasi web profile SD IT Semesta Cendekia dan sistem Penerimaan Peserta Didik Baru (PPDB) untuk SD IT Cendekia — platform pendaftaran online yang mudah dan efisien.
 
-## Fitur
+## 🌟 Fitur Utama
 
-- Profil Sekolah (Visi & Misi, Struktur Organisasi)
-- Berita & Pengumuman
-- Pendaftaran Siswa Online
-- Sistem Poin Pendaftaran
-- Admin Dashboard dengan Leaderboard
-- Responsive Design
+### 👥 Untuk Calon Siswa & Orang Tua
+- **Pendaftaran Online**: Formulir pendaftaran multi-step yang user-friendly
+- **Upload Dokumen**: Upload foto, KTP, KK, dan dokumen pendukung lainnya
+- **Pemilihan Jadwal Tes**: Pilih jadwal tes yang tersedia sesuai kapasitas
+- **Status Real-time**: Cek status pendaftaran secara real-time
+- **Draft System**: Simpan dan lanjutkan pendaftaran kapan saja
+- **Validasi Otomatis**: Validasi NIK otomatis untuk mencegah duplikasi
 
-## Persyaratan Sistem
+### 👨‍💼 Panel Administrator
+- **Dashboard Lengkap**: Overview statistik pendaftaran dan data penting
+- **Manajemen Pendaftar**: Kelola semua data pendaftaran dengan mudah
+- **Jadwal Tes**: Atur jadwal tes dan kapasitas peserta
+- **Export Data**: Export data ke Excel untuk analisis lebih lanjut
+- **Galeri & Konten**: Kelola konten website dan galeri foto
+- **Sistem Pengguna**: Manajemen user dan hak akses
 
-- PHP >= 8.1
+### 🌐 Website Publik
+- **Profil Sekolah**: Informasi lengkap tentang SD IT Cendekia
+- **Berita & Artikel**: Update terbaru dan informasi penting
+- **Galeri Foto**: Dokumentasi kegiatan sekolah
+- **Kontak & Lokasi**: Informasi kontak dan alamat sekolah
+- **Responsive Design**: Tampilan optimal di semua perangkat
+
+## 🛠️ Teknologi
+
+- **Backend**: Laravel 10.x (PHP 8.1+)
+- **Frontend**: Tailwind CSS, Alpine.js
+- **Database**: MySQL 8.0+
+- **File Storage**: Laravel Storage (Local/Cloud)
+- **Authentication**: Laravel Sanctum
+- **PDF Generation**: DomPDF
+- **Excel Export**: Maatwebsite Excel
+
+## 📋 Prasyarat
+
+- PHP 8.1 atau lebih tinggi
 - Composer
-- MySQL/MariaDB
 - Node.js & NPM
+- MySQL 8.0+
 - Web Server (Apache/Nginx)
 
-## Instalasi
+## 🚀 Instalasi
 
-1. Clone repository
+### 1. Clone Repository
 ```bash
-git clone [URL_REPOSITORY]
-cd profile-sekolah
+git clone [repository-url]
+cd sditcendekia
 ```
 
-2. Install dependencies PHP
+### 2. Install Dependencies
 ```bash
+# Install PHP dependencies
 composer install
-```
 
-3. Install dependencies JavaScript
-```bash
+# Install Node dependencies
 npm install
 ```
 
-4. Salin file .env
+### 3. Environment Setup
 ```bash
+# Copy environment file
 cp .env.example .env
-```
 
-5. Generate application key
-```bash
+# Generate application key
 php artisan key:generate
 ```
 
-6. Konfigurasi database di file .env
-```
+Buka file `.env` dan sesuaikan konfigurasi database:
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=profile_sekolah
-DB_USERNAME=root
-DB_PASSWORD=
+DB_DATABASE=nama_database
+DB_USERNAME=username_database
+DB_PASSWORD=password_database
 ```
 
-7. Jalankan migrasi dan seeder
+### 4. Setup Database
+
 ```bash
-php artisan migrate --seed
+# Jalankan migrasi database
+php artisan migrate
+
+# (Opsional) Jalankan seeder untuk data awal
+php artisan db:seed
 ```
 
-8. Compile assets
-```bash
-npm run dev
-```
+### 5. Menjalankan Aplikasi
 
-9. Jalankan server development
 ```bash
+# Jalankan development server
 php artisan serve
+
+# Aplikasi akan berjalan di http://localhost:8000
 ```
 
 ## Akses Admin
@@ -79,40 +108,126 @@ Gunakan kredensial berikut untuk login ke dashboard admin:
 - Email: admin@admin.com
 - Password: password
 
-## Struktur Database
+## Struktur Modul
 
-### Tabel Utama:
+1. **Profil Sekolah**
+   - Sambutan Kepala Sekolah
+   - Visi & Misi
+   - Struktur Organisasi
+   - Berita/Artikel
+   - Galeri
+
+2. **PPDB Online**
+   - Pendaftaran Siswa Baru
+   - Form Data Diri
+   - Upload Dokumen (KK & Akta)
+   - Pemilihan Jadwal Tes
+   - Status Pendaftaran
+
+3. **Admin Panel**
+   - Manajemen Pendaftaran
+   - Verifikasi Dokumen
+   - Pengaturan Jadwal Tes
+   - Manajemen Konten Website
+
+## Fitur Utama
+
+### PPDB Online
+- Form pendaftaran multi-step
+- Upload dokumen persyaratan
+- Perhitungan usia otomatis
+- Status rekomendasi PIP berdasarkan penghasilan orang tua
+- Sistem kuota jadwal tes (20 siswa per hari)
+- Notifikasi sisa kuota
+
+### Admin Panel
+- Dashboard admin dengan leaderboard
+- Manajemen data pendaftar
+- Pengaturan kuota tes
+- Pengelolaan konten website
+- Cetak laporan pendaftaran
+
+### Struktur Database
+
+Tabel Utama:
 - registrations: Data pendaftaran siswa
 - registration_points: Sistem poin pendaftaran
-- articles: Berita sekolah
+- registration_answers: Jawaban form pendaftaran
+- articles: Berita & pengumuman sekolah
 - struktur_organisasis: Data struktur organisasi
 
-## Pengembangan
+## Teknologi yang Digunakan
 
-Untuk pengembangan:
-1. Fork repository ini
-2. Buat branch fitur baru
+- Laravel 10
+- Tailwind CSS
+- Alpine.js
+- MySQL
+- Git
+
+## Maintenance
+
+### Update Dependencies
+
 ```bash
-git checkout -b nama-fitur
+# Update composer dependencies
+composer update
+
+# Update npm packages
+npm update
 ```
-3. Commit perubahan
+
+### Backup Database
+
 ```bash
-git commit -m 'Tambah fitur baru'
+# Export database
+php artisan db:backup
 ```
-4. Push ke branch
+
+### Clear Cache
+
 ```bash
-git push origin nama-fitur
+# Clear application cache
+php artisan cache:clear
+
+# Clear view cache
+php artisan view:clear
+
+# Clear config cache
+php artisan config:clear
 ```
+
+## Troubleshooting
+
+### Issue: Permission Denied
+```bash
+# Set permission untuk storage dan bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+```
+
+### Issue: Database Connection Error
+1. Periksa konfigurasi database di `.env`
+2. Pastikan service MySQL berjalan
+3. Cek kredensial database
+
+### Issue: Asset Not Found
+```bash
+# Rebuild assets
+npm run build
+```
+
+## Kontribusi
+
+1. Fork repository
+2. Buat branch baru (`git checkout -b fitur-baru`)
+3. Commit perubahan (`git commit -am 'Menambah fitur baru'`)
+4. Push ke branch (`git push origin fitur-baru`)
 5. Buat Pull Request
 
 ## Lisensi
 
 [MIT License](LICENSE.md)
 
-## Kontribusi
-
-Kontribusi selalu diterima. Untuk perubahan besar, harap buka issue terlebih dahulu untuk mendiskusikan perubahan yang diinginkan.
-
 ## Support
 
-Untuk bantuan dan pertanyaan, silakan buat issue baru di repository ini.
+Jika ada pertanyaan atau kendala, silakan buat issue di repository ini atau hubungi maintainer:
+- GitHub: [@rigel-sayudha](https://github.com/rigel-sayudha)

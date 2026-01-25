@@ -17,7 +17,7 @@
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div class="relative">
                     @if($article->gambar)
-                        <img src="{{ asset('storage/' . ltrim($article->gambar, '/')) }}" 
+                        <img src="{{ asset('storage/' . $article->gambar) }}" 
                              alt="{{ $article->judul }}" 
                              class="w-full h-48 object-cover">
                     @else

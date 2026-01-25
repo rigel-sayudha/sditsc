@@ -34,7 +34,7 @@
                 <th>Penghasilan Ayah</th>
                 <th>Penghasilan Ibu</th>
                 <th>Alamat</th>
-                <!-- <th>No. Telp</th> -->
+                <th>No. Telp</th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@
                 <td>{{ $reg->penghasilan_ayah }}</td>
                 <td>{{ $reg->penghasilan_ibu }}</td>
                 <td>{{ $reg->alamat }}</td>
-                <!-- <td>{{ $reg->no_telp }}</td> -->
+                <td>{{ $reg->telepon_ortu }}</td>
             </tr>
             @endforeach
         </tbody>

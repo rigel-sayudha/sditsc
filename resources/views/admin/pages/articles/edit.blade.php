@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('admin.layouts.adminedit')
 
 @section('title', 'Edit Berita')
 
@@ -36,7 +36,7 @@
                     <label for="gambar" class="block text-gray-700 font-medium mb-2">Gambar</label>
                     @if($article->gambar)
                         <div class="mb-2">
-                            <img src="{{ Storage::url($article->gambar) }}" alt="Current Image" class="w-48 h-auto">
+                            <img src="{{ asset('storage/' . $article->gambar) }}" alt="Current Image" class="w-48 h-auto">
                             <p class="text-sm text-gray-600 mt-1">Gambar saat ini</p>
                         </div>
                     @endif

@@ -3,13 +3,13 @@
         <div class="carousel relative w-full min-h-screen">
             <div class="carousel-items absolute inset-0">
             <div class="carousel-item active">
-                <img src="images/background-sekolah.jpg" class="w-full h-screen object-cover object-center" alt="Slide 1">
+                <img src="{{ asset('images/scdepan.png') }}" class="w-full h-screen object-cover object-center" alt="Slide 1">
             </div>
             <div class="carousel-item">
-                <img src="images/background-sekolah.jpg" class="w-full h-screen object-cover object-center" alt="Slide 2">
+                <img src="{{ asset('images/pram.jpeg') }}" class="w-full h-screen object-cover object-center" alt="Slide 2">
             </div>
             <div class="carousel-item">
-                <img src="images/background-sekolah.jpg" class="w-full h-screen object-cover object-center" alt="Slide 3">
+                <img src="{{ asset('images/upc.jpeg') }}" class="w-full h-screen object-cover object-center" alt="Slide 3">
             </div>
             </div>
 

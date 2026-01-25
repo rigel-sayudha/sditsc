@@ -35,6 +35,8 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        
+        // Set flash message untuk SweetAlert
+        return redirect('/')->with('logout_success', 'Anda berhasil logout dari sistem!');
     }
 }

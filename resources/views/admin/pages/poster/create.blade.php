@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('admin.layouts.admincreate')
 @section('title', 'Tambah Poster Pop-up')
 @section('content')
 <div class="max-w-lg mx-auto bg-white p-6 rounded shadow">

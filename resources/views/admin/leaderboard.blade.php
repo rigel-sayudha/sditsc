@@ -8,7 +8,7 @@ Data Pendaftaran Siswa Baru
 <div class="flex flex-col sm:flex-row justify-between mb-6 gap-2">
     <div class="flex gap-2">
         <a href="{{ route('admin.printAcceptedRegistrations') }}" target="_blank" class="inline-block px-6 py-2 bg-green-700 text-white rounded hover:bg-green-800 font-semibold shadow transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m0 0l-3-3m3 3l3-3m-6 3h6" /></svg>
+            
             Rekap PDF Siswa Lolos
         </a>
         <form id="form-hapus-semua" action="{{ route('admin.registrations.deleteAll') }}" method="POST" class="inline-block">
@@ -54,6 +54,7 @@ Data Pendaftaran Siswa Baru
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pekerjaan Ibu</th>
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penghasilan Ayah</th>
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penghasilan Ibu</th>
+                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No. Hp Orang Tua</th>
                     {{-- <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Penghasilan Orang Tua (Poin)</th> --}}
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status PIP</th>
                     <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File KK</th>
@@ -94,6 +95,15 @@ Data Pendaftaran Siswa Baru
                     <td class="px-4 py-3 whitespace-nowrap">{{ $reg->pekerjaan_ibu }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ $reg->penghasilan_ayah }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ $reg->penghasilan_ibu }}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">
+                        @if($reg->telepon_ortu)
+                            <div class="flex items-center gap-2">
+                                <a href="https://wa.me/{{ '62' . substr(preg_replace('/[^0-9]/', '', $reg->telepon_ortu), 1) }}?text=Halo,%20Bapak/Ibu%2C%20saya%20dari%20SDIT%20Semesta%20Cendekia%20terkait%20pendaftaran%20{{ urlencode($reg->nama) }}" target="_blank" class="text-sm text-green-600 hover:text-green-800 hover:underline" title="WhatsApp">{{ $reg->telepon_ortu }}</a>
+                            </div>
+                        @else
+                            <span class="text-gray-400">-</span>
+                        @endif
+                    </td>
                     {{-- <td class="px-4 py-3 whitespace-nowrap">
                         @php
                             $total = penghasilanToNominal($reg->penghasilan_ayah) + penghasilanToNominal($reg->penghasilan_ibu);

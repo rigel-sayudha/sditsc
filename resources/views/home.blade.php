@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDIT SEMESTA CENDEKIA - Sekolah Dasar Berkualitas</title>
-    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         html {
@@ -141,18 +141,18 @@
         </div>
     </section>
 
-    <!-- Informasi & Sambutan Section -->
+    <!-- Informasi & Sambutan Section 
     <section id="informasi-sambutan" class="py-12 md:py-16 bg-gradient-to-b from-white to-blue-50">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 mb-12 md:mb-20">
                 <div class="lg:col-span-3">
                     <div class="h-full relative rounded-xl overflow-hidden shadow-xl hover-card">
-                        <img src="/images/banner-kartini.jpeg" alt="Banner" class="w-full h-[150px] md:h-[200px] object-cover">
+                        <img src="{{ asset('images/banner-kartini.jpeg') }}" alt="Banner" class="w-full h-[150px] md:h-[200px] object-cover">
                     </div>
                 </div>               
                 <div class="lg:col-span-9">
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-                        <!-- Pengumuman -->
+                         Pengumuman 
                         <div class="lg:col-span-1 bg-white rounded-xl shadow-lg p-6 hover-card">
                             <h2 class="text-2xl font-bold mb-6">Pengumuman</h2>
                             <div class="space-y-4">
@@ -190,7 +190,7 @@
                             <div class="flex flex-col md:flex-row md:space-x-8">
                                 <div class="flex-shrink-0 mb-4 md:mb-0 w-full md:w-40">
                                     @if($sambutan->foto)
-                                        <img src="{{ Storage::url($sambutan->foto) }}" alt="Kepala Sekolah" class="w-full h-40 object-cover rounded-lg shadow-md" style="max-width:160px;max-height:160px;display:block;margin:auto;">
+                                        <img src="{{ asset('storage/' . $sambutan->foto) }}" alt="Kepala Sekolah" class="w-full h-40 object-cover rounded-lg shadow-md" style="max-width:160px;max-height:160px;display:block;margin:auto;">
                                     @else
                                         <div class="w-full md:w-40 h-40 bg-gray-200 flex items-center justify-center rounded-lg">
                                             <span class="text-gray-400">No Image</span>
@@ -238,7 +238,7 @@
             </div>
         </div>
     </section>
-
+-->
     <!-- Articles Section -->
     <section id="articles" class="py-12 md:py-16" style="background-color:#e6f4ec;">
         <div class="container mx-auto px-4">
@@ -250,7 +250,7 @@
                 @forelse($articles as $article)
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2">
                 <div class="relative">
-                    <img src="{{ $article->gambar ? asset('storage/' . ltrim($article->gambar, '/')) : asset('images/news1.jpg') }}" alt="{{ $article->judul }}" class="w-full h-56 object-cover">
+                    <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->judul }}" class="w-full h-56 object-cover">
                     <div class="absolute bottom-2 left-2 bg-black bg-opacity-50 rounded-md px-3 py-1">
                         <span class="text-white text-xs font-semibold">{{ $article->created_at->format('d F Y') }}</span>
                     </div>
@@ -351,7 +351,7 @@
                 <!-- Map -->
                 <div class="rounded-lg overflow-hidden shadow-lg h-[300px] md:h-[400px]">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2834485481613!2d106.82704871476885!3d-6.175392395527642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sMonumen%20Nasional!5e0!3m2!1sen!2sid!4v1623405821286!5m2!1sen!2sid"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2306.8857643466904!2d110.8962832638998!3d-7.561073815783938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1779179248bd%3A0xa5087ca2d66bcc55!2sSDIT%20Semesta%20Cendekia!5e0!3m2!1sid!2sid!4v1754366776896!5m2!1sid!2sid"
                         width="100%" 
                         height="100%" 
                         style="border:0;" 
@@ -374,7 +374,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-800">Alamat</h4>
-                                <p class="text-gray-600">Jl. Pendidikan No. 123<br>Jakarta Pusat, 10110</p>
+                                <p class="text-gray-600">Jetis Kulon, Jetis, Kec. Jaten<br>Kabupaten Karanganyar, Jawa Tengah 57731</p>
                             </div>
                         </div>
 
@@ -386,7 +386,7 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-800">Email</h4>
-                                <p class="text-gray-600">info@sdpremium.sch.id</p>
+                                <p class="text-gray-600">semestacendekia.sdit@gmail.com</p>
                             </div>
                         </div>
 
@@ -398,8 +398,8 @@
                             </div>
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-800">Telepon</h4>
-                                <p class="text-gray-600">+62 21 1234 5678</p>
-                                <p class="text-gray-600">Fax: +62 21 1234 5679</p>
+                                <a href="https://wa.me/+6282242714248"><p class="text-gray-600">082242714248</p></a>
+                                <a href="https://wa.me/+6285791760118"><p class="text-gray-600">085791760118</p></a>
                             </div>
                         </div>
                     </div>
