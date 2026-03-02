@@ -2,6 +2,10 @@
 
 Aplikasi web profile SD IT Semesta Cendekia dan sistem Penerimaan Peserta Didik Baru (PPDB) untuk SD IT Cendekia — platform pendaftaran online yang mudah dan efisien.
 
+## 📸 Preview Aplikasi
+
+![Halaman Depan](public/images/scdepan.png)
+
 ## 🌟 Fitur Utama
 
 ### 👥 Untuk Calon Siswa & Orang Tua
