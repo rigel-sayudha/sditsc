@@ -1,4 +1,4 @@
-# SD IT Semesta Cendekia / 🎓 Sistem PPDB SD IT Cendekia
+# SD IT Semesta Cendekia / Sistem PPDB SD IT Cendekia
 
 Aplikasi web profile SD IT Semesta Cendekia dan sistem Penerimaan Peserta Didik Baru (PPDB) untuk SD IT Cendekia — platform pendaftaran online yang mudah dan efisien.
 
@@ -6,7 +6,7 @@ Aplikasi web profile SD IT Semesta Cendekia dan sistem Penerimaan Peserta Didik 
 
 ![Halaman Depan](public/images/scdepan.png)
 
-## 🌟 Fitur Utama
+##  Fitur Utama
 
 ### 👥 Untuk Calon Siswa & Orang Tua
 - **Pendaftaran Online**: Formulir pendaftaran multi-step yang user-friendly
@@ -41,7 +41,7 @@ Aplikasi web profile SD IT Semesta Cendekia dan sistem Penerimaan Peserta Didik 
 - **PDF Generation**: DomPDF
 - **Excel Export**: Maatwebsite Excel
 
-## 📋 Prasyarat
+## System Requirements
 
 - PHP 8.1 atau lebih tinggi
 - Composer
